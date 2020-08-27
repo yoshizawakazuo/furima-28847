@@ -1,24 +1,96 @@
-# README
+# テーブル設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users テーブル
 
-Things you may want to cover:
+| Column   | Type   | Options     |
+| -------- | ------ | ----------- |
+| name     | string | null: false |
+| email    | string | null: false |
+| password | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :credit_card
+- has_many :comments
+- has_many :items
+- has_one :profile
 
-* Configuration
+## items テーブル
 
-* Database creation
+| Column         | Type      | Options     |
+| ------         | ------    | ----------- |
+| name           | string    | null: false |
+| image          | string    | null: false |
+| items_status   | integer   | null: false |
+| seller         | reference | null: false |
+| preparation_day| integer   | null: false |
+| postage_payer  | integer   | null: false |
+| image          | text      | null: false |
+| area           | integer   | null: false |
+| category       | integer   | null: false |
+### Association
 
-* Database initialization
+- has_many :comments
+- belongs_to :user
+- has_one :send_item
 
-* How to run the test suite
+## profiles テーブル
 
-* Services (job queues, cache servers, search engines, etc.)
+| Column         | Type      | Options     |
+| ------         | ------    | ----------- |
+| first_name     | string    | null: false |
+| last_name      | string    | null: false |
+| first_name_kana| string    | null: false |
+| last_nama_kana | string    | null: false |
+| birth_day      | date      | null: false |
 
-* Deployment instructions
 
-* ...
+### Association
+
+- belongs_to :user
+
+## comments テーブル
+
+| Column  | Type       | Options                        |
+| ------- | ---------- | ------------------------------ |
+| comment | text       | null: false                    |
+| user    | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :item
+- belongs_to :user
+
+## credit_card テーブル
+
+| Column       | Type        | Options                        |
+| -------      | ----------  | ------------------------------ |
+| card_number  | integer     | null: false                    |
+| year         | integer     | null: false                    |
+| security_code| integer     | null: false                    |
+
+
+### Association
+
+- belongs_to :send_item
+- belongs_to :user
+
+
+## send_items テーブル
+
+| Column      | Type       | Options                        |
+| -------     | ---------- | ------------------------------ |
+| post_code   | integer    | null: false                    |
+| stats       | integer    | null: false                    |
+| city        | string     | null: false                    |
+| address     | string     | null: false                    |
+|phone_number | integer    | null: false                    |
+
+
+### Association
+
+- belongs_to :send_item
+- has_one :credit_card
+
+
