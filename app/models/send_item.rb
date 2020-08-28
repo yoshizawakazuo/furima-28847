@@ -1,0 +1,2 @@
+class SendItem < ApplicationRecord
+end
