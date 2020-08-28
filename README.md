@@ -21,17 +21,17 @@
 
 ## items テーブル
 
-| Column         | Type      | Options     |
-| ------         | ------    | ----------- |
-| name           | string    | null: false |
-| image          | string    | null: false |
-| items_status   | integer   | null: false |
-| user           | reference | null: false |
-| preparation_day| integer   | null: false |
-| postage_payer  | integer   | null: false |
-| area           | integer   | null: false |
-| category       | integer   | null: false |
-| price          | integer   | null: false |
+| Column         | Type      | Options                       |
+| ------         | ------    | -----------                   |
+| name           | string    | null: false                   |
+| image          | string    | null: false                   |
+| items_status   | integer   | null: false                   |
+| user_id        | integer   | null: false foreign_key: true |
+| preparation_day| integer   | null: false                   |
+| postage_payer  | integer   | null: false                   |
+| area           | integer   | null: false                   |
+| category       | integer   | null: false                   |
+| price          | integer   | null: false                   |
 
 ### Association
 
@@ -44,8 +44,8 @@
 
 | Column         | Type      | Options                       |
 | ------         | ------    | -----------                   |
-| user_id        | references| null: false foreign_key: true |
-| item_id        | references| null: false foreign_key: true |
+| user_id        | integer   | null: false foreign_key: true |
+| item_id        | integer   | null: false foreign_key: true |
 
 
 
@@ -60,8 +60,8 @@
 | Column  | Type       | Options                        |
 | ------- | ---------- | ------------------------------ |
 | comment | text       | null: false                    |
-| user    | references | null: false, foreign_key: true |
-| item    | references | null: false, foreign_key: true |
+| user_id | integer    | null: false, foreign_key: true |
+| item_id | integer    | null: false, foreign_key: true |
 
 ### Association
 
@@ -80,7 +80,7 @@
 | address       | string     | null: false                    |
 |building_number| string     | null: false                    |
 |phone_number   | string     | null: false                    |
-|buying_id      | references | null: false foreign_key: true  |
+|buying_id      | integer    | null: false foreign_key: true  |
 
 ### Association
 
