@@ -10,14 +10,14 @@
 | first_name     | string    | null: false |
 | last_name      | string    | null: false |
 | first_name_kana| string    | null: false |
-| last_nama_kana | string    | null: false |
+| last_name_kana | string    | null: false |
 | birth_day      | date      | null: false |
 ### Association
 
 
 - has_many :comments
 - has_many :items
-- has_one  :buying
+- has_many  :buying
 
 ## items テーブル
 
@@ -26,17 +26,17 @@
 | name           | string    | null: false |
 | image          | string    | null: false |
 | items_status   | integer   | null: false |
-| seller         | reference | null: false |
+| user           | reference | null: false |
 | preparation_day| integer   | null: false |
 | postage_payer  | integer   | null: false |
-| image          | text      | null: false |
 | area           | integer   | null: false |
 | category       | integer   | null: false |
+| price          | integer   | null: false |
+
 ### Association
 
 - has_many :comments
 - belongs_to :user
-- has_one :send_item
 - has_one :buying
 
 
@@ -44,8 +44,8 @@
 
 | Column         | Type      | Options                       |
 | ------         | ------    | -----------                   |
-| user_id        |           | null: false foreign_key: true |
-| item_id        |           | null: false foreign_key: true |
+| user_id        | references| null: false foreign_key: true |
+| item_id        | references| null: false foreign_key: true |
 
 
 
@@ -80,7 +80,7 @@
 | address       | string     | null: false                    |
 |building_number| string     | null: false                    |
 |phone_number   | string     | null: false                    |
-|buying_id      | string     | null: false foreign_key: true  |
+|buying_id      | references | null: false foreign_key: true  |
 
 ### Association
 
