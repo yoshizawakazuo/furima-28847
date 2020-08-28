@@ -52,8 +52,8 @@
 ### Association
 
 - belongs_to :user
-- belongs_to :buying
-- belongs_to :send_item
+- has_one :send_item
+- belongs_to :item
 
 ## comments テーブル
 
@@ -80,10 +80,10 @@
 | address       | string     | null: false                    |
 |building_number| string     | null: false                    |
 |phone_number   | string     | null: false                    |
-
+|buying_id      | string     | null: false foreign_key: true  |
 
 ### Association
 
-- belongs_to :send_item
+
 - belongs_to :buying
 
