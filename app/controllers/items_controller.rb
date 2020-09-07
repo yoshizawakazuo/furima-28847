@@ -8,13 +8,13 @@ class ItemsController < ApplicationController
     
   end
   
-  def new
-    @item = Item.new
-  end
+  # def new
+  #   @item = Item.new
+  # end
  
-  def create
-    Item.new(item_params)
-  end
+  # def create
+  #   Item.new(item_params)
+  # end
  
     private
  

@@ -13,10 +13,10 @@ class User < ApplicationRecord
 
          with_options presence: true do
            validates :nickname
-           validates :first_name,format: { with: @zenkaku, message: "can't be blank"}
-           validates :last_name, format: { with: @zenkaku, message: "Full-width characters"}
-           validates :first_name_kana, format: { with: @katakana, message: "Full-width characters"}
-           validates :last_name_kana,  format: { with: @katakana, message: "Full-width characters"}
+           validates :first_name,format: { with: zenkaku, message: "Full-width characters"}
+           validates :last_name, format: { with: zenkaku, message: "Full-width characters"}
+           validates :first_name_kana, format: { with: katakana, message: "Full-width characters"}
+           validates :last_name_kana,  format: { with: katakana, message: "Full-width characters"}
            validates :birth_day
            validates :email, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "can't be blank"}
            validates :password,format: { with: /\A[a-z0-9]+\z/i, length: {minimun: 6}, message: " Include both letters and numbers"}
