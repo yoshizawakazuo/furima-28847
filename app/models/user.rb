@@ -19,6 +19,6 @@ class User < ApplicationRecord
            validates :last_name_kana,  format: { with: katakana, message: "Full-width characters"}
            validates :birth_day
            validates :email, format: {with: /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i, message: "can't be blank"}
-           validates :password,format: { with: /\A[a-z0-9]+\z/i, message: " Include both letters and numbers"}
+           validates :password,format: { with: /\A(?=.*?[a-z])(?=.*?\d)[a-z\d]+\z/i, message: " Include both letters and numbers"}
          end
 end
