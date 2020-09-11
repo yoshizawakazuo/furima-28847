@@ -11,9 +11,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :postage_payer
   belongs_to_active_hash :area
   belongs_to_active_hash :category
-  
-
-  
+   
   with_options presence: true do
     validates :image
     validates :name
@@ -23,19 +21,19 @@ class Item < ApplicationRecord
     validates :preparation_day
     validates :postage_payer
     validates :area
-    validates :category
-    
+    validates :category 
   end
-  validates :price, format: {with: /\A[0-9]+\z/}
-  validates_inclusion_of :price, in: 300..9999999
 
   
-  validates :items_status_id,    numericality: { other_than: 0 }
-  validates :preparation_day_id, numericality: { other_than: 0 }
-  validates :postage_payer_id,   numericality: { other_than: 0 }
-  validates :area_id,            numericality: { other_than: 0 }
-  validates :category_id,        numericality: { other_than: 0 }
-  
+  validates_inclusion_of :price, in: 300..10000000 , format: {with: /\A[0-9]+\z/}
+
+  with_options numericality: {other_than: 0} do
+    validates :items_status_id   
+    validates :preparation_day_id 
+    validates :postage_payer_id  
+    validates :area_id
+    validates :category_id
+  end
  
 
 end

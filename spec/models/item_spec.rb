@@ -117,12 +117,16 @@ describe Item do
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
 
-      it "priceが300~9999999の範囲外では登録できない" do 
-        @item.price = "1"
+      it "priceが300~9999999の範囲外(299以下）では登録できない" do 
+        @item.price = "299"
         @item.valid?
         expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
-      
+      it "priceが300~9999999の範囲外(10000000以上）では登録できない" do 
+        @item.price = "10000000"
+        @item.valid?
+        expect(@item.errors.full_messages).to include()
+      end
     end
   end
 end
