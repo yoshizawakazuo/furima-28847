@@ -5,7 +5,6 @@ describe Item do
     @item = FactoryBot.build(:item)
     @user = FactoryBot.create(:user)
     @item.user_id = @user.id
-    # binding.pry
     
     
   end

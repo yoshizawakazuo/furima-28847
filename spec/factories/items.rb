@@ -9,7 +9,6 @@ FactoryBot.define do
     area_id                 {1}
     category_id             {1}
     price                   {30000}
-    # association :user
 
   end
 end
