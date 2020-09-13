@@ -1,6 +1,7 @@
 class ItemsController < ApplicationController
-
- 
+  
+  before_action :set_item, only: [:edit, :update]
+  
   before_action :authenticate_user!, only: [:new]
 
   def index
@@ -24,15 +25,19 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    @item = Item.find(params[:id])
   end
 
   def update
-    item = Item.find(params[:id])
-    item.update(item_params)
+
+    if@item.update(item_params)
+      redirect_to @item
+    else
+    render :edit
+    end
+
   end
     private
- 
+
   def item_params
      params.require(:item).permit( 
        :name, 
@@ -46,6 +51,10 @@ class ItemsController < ApplicationController
        :image,
       ) 
       .merge(user_id: current_user.id)
+  end
+
+  def set_item
+      @item = Item.find(params[:id])
   end
   
   
