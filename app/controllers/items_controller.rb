@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   
-  before_action :set_item, only: [:edit, :update, :show]
+  before_action :set_item, only: [:edit, :update]
   
   before_action :authenticate_user!, only: [:new]
 
@@ -24,12 +24,7 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-   
-  end
-
   def edit
-
   end
 
   def update
