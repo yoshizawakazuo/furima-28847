@@ -30,7 +30,7 @@ class ItemsController < ApplicationController
   def update
 
     if@item.update(item_params)
-      redirect_to @item
+    redirect_to @item
     else
     render :edit
     end
@@ -38,8 +38,13 @@ class ItemsController < ApplicationController
   end
 
   def destroy  
-    @item.destroy
-    redirect_to("/")
+
+    if@item.destroy
+    redirect_to root_path
+    else
+    render :edit
+    end
+
   end
     private
 
@@ -53,7 +58,7 @@ class ItemsController < ApplicationController
        :category_id, 
        :price,
        :info,
-       :image,
+       :image
       ) 
       .merge(user_id: current_user.id)
   end
