@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   
-  before_action :set_item, only: [:edit, :update, :show]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
   
   before_action :authenticate_user!, only: [:new]
 
@@ -30,7 +30,17 @@ class ItemsController < ApplicationController
   def update
 
     if@item.update(item_params)
-      redirect_to @item
+    redirect_to @item
+    else
+    render :edit
+    end
+
+  end
+
+  def destroy  
+
+    if@item.destroy
+    redirect_to root_path
     else
     render :edit
     end
@@ -48,7 +58,7 @@ class ItemsController < ApplicationController
        :category_id, 
        :price,
        :info,
-       :image,
+       :image
       ) 
       .merge(user_id: current_user.id)
   end
