@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   
-  before_action :set_item, only: [:edit, :update, :show]
+  before_action :set_item, only: [:edit, :update, :show, :destroy]
   
   before_action :authenticate_user!, only: [:new]
 
@@ -35,6 +35,11 @@ class ItemsController < ApplicationController
     render :edit
     end
 
+  end
+
+  def destroy  
+    @item.destroy
+    redirect_to("/")
   end
     private
 
