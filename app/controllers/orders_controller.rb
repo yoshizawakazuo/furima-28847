@@ -12,16 +12,16 @@ class OrdersController < ApplicationController
     @item = Item.find(params[:item_id])
     @order = ItemOrder.new(order_params)
   
-    pay_item
-    @order.save
-    redirect_to root_path
-    # if @order.valid?
-    # pay_item 
-    #   @order.save
-    #   return redirect_to root_path
-    # else
-    #   render 'index'
-    #  end
+    # pay_item
+    # @order.save
+    # redirect_to root_path
+    if @order.valid?
+    pay_item 
+      @order.save
+      return redirect_to root_path
+    else
+      render 'index'
+     end
   end
 
   private
