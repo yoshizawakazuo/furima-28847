@@ -3,9 +3,7 @@ require 'rails_helper'
 describe Order do
   before do  
     @order = FactoryBot.build(:item_order)
-  #   payjp_customer = double("Payjp::Customer")
-  #   allow(Payjp::Customer).to receive(:create).and_return(payjp_customer)
-   end
+  end
 
   describe '商品の購入' do
     context '購入がうまくいくとき' do
@@ -51,7 +49,11 @@ describe Order do
         @order.valid?
         expect(@order.errors.full_messages).to include("Phone number is invalid")
       end  
+      it 'tokenが空だと購入できない' do
+        @order.token = nil
+        @order.valid?
+        expect(@order.errors.full_messages).to include("Token can't be blank")
+      end
     end
-
   end
 end

@@ -1,20 +1,18 @@
 class OrdersController < ApplicationController
 
+  before_action :set_item, only: [:index, :create]
+
   def index
-    @item = Item.find(params[:item_id])
     @order = ItemOrder.new
   end
   
   
 
   def create
-    #  binding.pry
-    @item = Item.find(params[:item_id])
+   
     @order = ItemOrder.new(order_params)
   
-    # pay_item
-    # @order.save
-    # redirect_to root_path
+    
     if @order.valid?
     pay_item 
       @order.save
@@ -25,6 +23,10 @@ class OrdersController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:id])
+  end
 
   def order_params
     params.require(:item_order)
