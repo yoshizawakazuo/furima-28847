@@ -1,5 +1,6 @@
 class ItemsController < ApplicationController
   
+
   before_action :set_item, only: [:edit, :update, :show, :destroy, :order]
   
   before_action :authenticate_user!, only: [:new]
@@ -20,6 +21,7 @@ class ItemsController < ApplicationController
     else
       render "new"
     end 
+    
   end
 
 

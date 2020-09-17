@@ -15,4 +15,5 @@ class ApplicationController < ActionController::Base
       nickname == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"] 
     end
   end
+  
 end
