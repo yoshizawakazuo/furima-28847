@@ -42,31 +42,39 @@ describe Item do
         expect(@item.errors.full_messages).to include("Info can't be blank")
       end
 
+     
+
       it "items_statusが'--'だと登録できない" do 
         @item.items_status_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Items status must be other than 0")
       end
 
+    
+
       it "prepration_day_idが'--'だと登録できない" do 
         @item.preparation_day_id = 0
         @item.valid?
         expect(@item.errors.full_messages).to include("Preparation day must be other than 0")
       end
- 
+
+      
+
       it "postage_payer_idが'--'だと登録できない" do 
         @item.postage_payer_id = 0
 
         @item.valid?
         expect(@item.errors.full_messages).to include("Postage payer must be other than 0")
       end
-       
+      
+      
       it "area_idが'--'だと登録できない" do 
         @item.area_id = 0
 
         @item.valid?
         expect(@item.errors.full_messages).to include("Area must be other than 0")
       end
+
       
       it "category_idが'--'だと登録できない" do
         @item.category_id = 0
